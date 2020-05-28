@@ -2,8 +2,32 @@
 
 {% block content %}
 
-<div class="my-5">
-    <h1>Hello World!!</h1>
+<div class="text-center my-5">
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="search">
+        <button class="btn btn-primary mt-2" type="submit">検索</button>
+    </form>
+
+    <div class="mb-5">
+        <h1>検索結果</h1>
+    </div>
+    <div class="row">
+        {% for book in book_data %}
+            <div class="col-3 mb-3">
+                <div class="card img-thumbnail booklist h-100">
+                    <img class="card-img-top card-thum" src="{{ book.image }}" alt="">
+                    <div class="card-body text-center px-2 py-3">
+                        <h5 class="font-weight-bold">{{ book.title }}</h5>
+                    </div>
+                    <a class="stretched-link" href=""></a>
+                </div>
+            </div>
+        {% empty %}
+            <p>該当するものはありません</p>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
