@@ -28,7 +28,8 @@ class IndexView(View):
         if form.is_valid():
             keyword = form.cleaned_data['title']
             params = {
-                'title': keyword
+                'title': keyword,
+                'hits': 28,
             }
             items = get_api_data(params)
             book_data = []
