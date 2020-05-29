@@ -10,6 +10,7 @@
         <button class="btn btn-primary mt-2" type="submit">検索</button>
     </form>
 
+    {% if book_data %}
     <div class="mb-5">
         <h1>検索結果</h1>
     </div>
@@ -21,13 +22,15 @@
                     <div class="card-body text-center px-2 py-3">
                         <h5 class="font-weight-bold">{{ book.title }}</h5>
                     </div>
-                    <a class="stretched-link" href=""></a>
+                    <a class="stretched-link" href="{% url 'detail' book.isbn %}"></a>
                 </div>
             </div>
         {% empty %}
             <p>該当するものはありません</p>
         {% endfor %}
     </div>
+    {% endif %}
+
 </div>
 
 {% endblock %}
